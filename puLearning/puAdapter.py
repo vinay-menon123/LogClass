@@ -109,13 +109,12 @@ class PUAdapter(object):
         """
         positives = np.where(y == 1.)[0]
         hold_out_size = np.ceil(len(positives) * self.hold_out_ratio)
-
+        print("postivies",positives)
         if len(positives) <= hold_out_size:
             raise('Not enough positive examples to estimate p(s=1|y=1,x). Need at least ' + str(hold_out_size + 1) + '.')
 
         np.random.shuffle(positives)
-        #print hold_out_size
-        #print type(hold_out_size)
+       # print hold_out_size
         hold_out = positives[:int(hold_out_size)]
         X_hold_out = X[hold_out]
         X = np.delete(X, hold_out,0)

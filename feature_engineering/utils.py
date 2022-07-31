@@ -20,7 +20,7 @@ def save_feature_dict(params, feat_dict, name):
 
 
 def binary_train_gtruth(y):
-    return np.where(y == -1.0, -1.0, 1.0)
+    return np.where(y == 0.0, 1.0, -1.0)
 
 
 def multi_features(x, y):

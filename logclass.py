@@ -1,11 +1,10 @@
 from sklearn.model_selection import StratifiedKFold
-from .utils import (
-    save_params,
-    load_params,
-    file_handling,
-    TestingParameters,
-    print_params,
-)
+from .utils import save_params
+from .utils import load_params
+from .utils import file_handling
+from .utils import TestingParameters
+from .utils import print_params
+
 from .preprocess import registry as preprocess_registry
 from .preprocess.utils import load_logs
 from .feature_engineering.utils import (
@@ -181,6 +180,7 @@ def main():
     params = parse_args(init_args())
     if not params['train']:
         load_params(params)
+    #params.update({'train': False})
     print_params(params)
     file_handling(params)  # TODO: handle the case when the experiment ID already exists - this I think is the only one that matters
     # Filter params from raw logs

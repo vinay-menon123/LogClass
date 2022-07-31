@@ -3,7 +3,7 @@ import numpy as np
 from tqdm import tqdm
 from ..decorators import print_step
 from multiprocessing import Pool
-
+import sys
 
 # Compiling for optimization
 re_sub_1 = re.compile(r"(:(?=\s))|((?<=\s):)")
@@ -60,6 +60,7 @@ def process_logs(input_source, output, process_line=None):
 def load_logs(params, ignore_unlabeled=False):
     log_path = params['logs']
     unlabel_label = params['healthy_label']
+    #print("unlabeled_label",unlabel_label)
     x_data = []
     y_data = []
     label_dict = {}
@@ -82,4 +83,8 @@ def load_logs(params, ignore_unlabeled=False):
             y_data.append(label_dict[label])
     x_data = np.array(x_data)
     y_data = np.array(y_data)
+    np.set_printoptions(threshold=sys.maxsize)  
+    # print("X_data",x_data)
+    # print("Y_data",y_data)
+    # print("Target_name",target_names)
     return x_data, y_data, target_names

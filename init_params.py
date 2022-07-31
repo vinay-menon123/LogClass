@@ -171,6 +171,7 @@ def parse_main_args(args):
     }
     if args.raw_logs:
         params["raw_logs"] = os.path.normpath(args.raw_logs[0])
+        print("raw_logs",params["raw_logs"])
     if args.kfold:
         params["kfold"] = args.kfold[0]
     if args.logs:

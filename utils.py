@@ -23,6 +23,7 @@ class TestingParameters():
 
 
 def load_params(params):
+    print(params)
     params_file = os.path.join(
         params['id_dir'], f"best_params.json")
     with open(params_file, "r") as fp:
@@ -44,6 +45,7 @@ def file_handling(params):
                 f"File {params['raw_logs']} doesn't exist. "
                 + "Please provide the raw logs path."
             )
+        
         logs_directory = os.path.dirname(params['logs'])
         if not os.path.exists(logs_directory):
             os.makedirs(logs_directory)

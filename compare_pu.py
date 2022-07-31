@@ -5,6 +5,7 @@ from .utils import (
     print_params,
     save_results,
 )
+import sys
 from .preprocess import registry as preprocess_registry
 from .preprocess.utils import load_logs
 from .feature_engineering.utils import (
@@ -109,6 +110,8 @@ def run_test(params, x_data, y_data):
     results = init_results(params)
     # Binary training features
     y_data = binary_train_gtruth(y_data)
+    np.set_printoptions(threshold=sys.maxsize)  
+    print("y_data value is: ",y_data)
     x_data, y_data = force_ratio(params, x_data, y_data)
     print("total logs", len(y_data))
     print(len(np.where(y_data == -1.0)[0]), " are unlabeled")
